@@ -1,0 +1,60 @@
+{ "description": "Fake list chats",
+  "data": [
+  {
+    "id": "1",
+    "user": "Bill Gates",
+    "photo": "https://lh3.google.com/u/0/d/1XEdKCylZpWEqNzr22M0BdYdFGy64motZ=w2000-h704-iv1",
+    "preview": "Hello World",
+    "date_time": "today"
+  },
+  {
+    "id": "2",
+    "user": "Frances Allen",
+    "photo": "https://lh3.google.com/u/0/d/13Q2N3_0XCStlT-sNEC_oNXGnj9cgWv8m=w1428-h910-iv1",
+    "preview": "Hello World",
+    "date_time": "today"
+  },
+  {
+    "id": "3",
+    "user": "Sheryl Sandberg",
+    "photo": "https://lh3.google.com/u/0/d/1QYT3JUDbuEIWfF2S4zm0lGz959f1n8Fc=w1428-h497-iv1",
+    "preview": "Hello World",
+    "date_time": "today"
+  },
+  {
+    "id": "4",
+    "user": "Steve Jobs",
+    "photo": "https://lh3.google.com/u/0/d/1rSV3n2nga3o267gJN77nUjDw9wwjh8cc=w1428-h497-iv1",
+    "preview": "Hello World",
+    "date_time": "today"
+  },
+  {
+    "id": "5",
+    "user": "Susan Wojcicki",
+    "photo": "https://lh3.google.com/u/0/d/1j0X1n_MqknQQMRT3vtSaylvpz7vnXdXD=w1428-h497-iv1",
+    "preview": "Hello World",
+    "date_time": "today"
+  },
+  {
+    "id": "6",
+    "user": "Radia Perlman",
+    "photo": "https://lh3.google.com/u/0/d/12NIpzijTANjpU6BtZgprKa2fY0ViRmk8=w1428-h497-iv1",
+    "preview": "Hello World",
+    "date_time": "today"
+  },
+  {
+    "id": "7",
+    "user": "Mark Zuckerberg",
+    "photo": "https://lh3.google.com/u/0/d/1349V1HR4SnyVQdj63K6rXd0U25C9wynr=w1428-h497-iv1",
+    "preview": "Hello World",
+    "date_time": "today"
+  },
+  {
+    "id": "8",
+    "user": "Alan Turing",
+    "photo": "https://lh3.google.com/u/0/d/1tOWU1cQeybJ98Aq9pDAom4f64sXfxKJF=w1428-h497-iv1",
+    "preview": "Hello World",
+    "date_time": "today"
+  }
+]
+}

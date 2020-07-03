@@ -1,0 +1,1 @@
+instalar styled-icons e colocar nos icones de check, timing, etc

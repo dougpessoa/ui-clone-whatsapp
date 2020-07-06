@@ -1,59 +1,83 @@
 { "description": "Fake list chats",
   "data": [
   {
-    "id": "1",
+    "id": "dcbfeef4-be11-11ea-b3de-0242ac130004",
     "user": "Bill Gates",
-    "photo": "https://lh3.google.com/u/0/d/1XEdKCylZpWEqNzr22M0BdYdFGy64motZ=w2000-h704-iv1",
-    "preview": "Hello World",
-    "date_time": "today"
+    "photo": "https://lh3.google.com/u/3/d/1XEdKCylZpWEqNzr22M0BdYdFGy64motZ=w1481-h919-iv1",
+    "preview": "Alright.",
+    "read": false,
+    "delivered": false,
+    "isOutgoing": false,
+    "date_time": "yesterday"
   },
   {
-    "id": "2",
+    "id": "ec8487fa-be11-11ea-b3de-0242ac130004",
     "user": "Frances Allen",
-    "photo": "https://lh3.google.com/u/0/d/13Q2N3_0XCStlT-sNEC_oNXGnj9cgWv8m=w1428-h910-iv1",
+    "photo": "https://lh3.google.com/u/3/d/13Q2N3_0XCStlT-sNEC_oNXGnj9cgWv8m=w1478-h919-iv1",
     "preview": "Hello World",
+    "read": false,
+    "delivered": false,
+    "isOutgoing": false,
     "date_time": "today"
   },
   {
-    "id": "3",
+    "id": "f00a30be-be11-11ea-b3de-0242ac130004",
     "user": "Sheryl Sandberg",
-    "photo": "https://lh3.google.com/u/0/d/1QYT3JUDbuEIWfF2S4zm0lGz959f1n8Fc=w1428-h497-iv1",
+    "photo": "https://lh3.google.com/u/3/d/1QYT3JUDbuEIWfF2S4zm0lGz959f1n8Fc=w1478-h583-iv1",
     "preview": "Hello World",
+    "read": false,
+    "delivered": false,
+    "isOutgoing": false,
     "date_time": "today"
   },
   {
-    "id": "4",
+    "id": "f566b802-be11-11ea-b3de-0242ac130004",
     "user": "Steve Jobs",
-    "photo": "https://lh3.google.com/u/0/d/1rSV3n2nga3o267gJN77nUjDw9wwjh8cc=w1428-h497-iv1",
+    "photo": "https://lh3.google.com/u/3/d/1rSV3n2nga3o267gJN77nUjDw9wwjh8cc=w1478-h583-iv1",
     "preview": "Hello World",
+     "read": false,
+    "delivered": false,
+    "isOutgoing": false,
     "date_time": "today"
   },
   {
-    "id": "5",
+    "id": "fa682b24-be11-11ea-b3de-0242ac130004",
     "user": "Susan Wojcicki",
-    "photo": "https://lh3.google.com/u/0/d/1j0X1n_MqknQQMRT3vtSaylvpz7vnXdXD=w1428-h497-iv1",
+    "photo": "https://lh3.google.com/u/3/d/1tOWU1cQeybJ98Aq9pDAom4f64sXfxKJF=w1478-h583-iv1",
     "preview": "Hello World",
+     "read": false,
+    "delivered": false,
+    "isOutgoing": false,
     "date_time": "today"
   },
   {
-    "id": "6",
+    "id": "fe08d030-be11-11ea-b3de-0242ac130004",
     "user": "Radia Perlman",
-    "photo": "https://lh3.google.com/u/0/d/12NIpzijTANjpU6BtZgprKa2fY0ViRmk8=w1428-h497-iv1",
+    "photo": "https://lh3.google.com/u/3/d/12NIpzijTANjpU6BtZgprKa2fY0ViRmk8=w1478-h583-iv1",
     "preview": "Hello World",
+     "read": false,
+    "delivered": false,
+    "isOutgoing": false,
     "date_time": "today"
   },
   {
-    "id": "7",
+    "id": "029fae02-be12-11ea-b3de-0242ac130004",
     "user": "Mark Zuckerberg",
-    "photo": "https://lh3.google.com/u/0/d/1349V1HR4SnyVQdj63K6rXd0U25C9wynr=w1428-h497-iv1",
+    "photo": "https://lh3.google.com/u/3/d/1349V1HR4SnyVQdj63K6rXd0U25C9wynr=w1478-h583-iv1",
     "preview": "Hello World",
+     "read": false,
+    "delivered": false,
+    "isOutgoing": false,
     "date_time": "today"
   },
   {
-    "id": "8",
+    "id": "05b2c7e6-be12-11ea-b3de-0242ac130004",
     "user": "Alan Turing",
-    "photo": "https://lh3.google.com/u/0/d/1tOWU1cQeybJ98Aq9pDAom4f64sXfxKJF=w1428-h497-iv1",
+    "photo": "https://lh3.google.com/u/3/d/1tOWU1cQeybJ98Aq9pDAom4f64sXfxKJF=w1478-h583-iv1",
     "preview": "Hello World",
+     "read": false,
+    "delivered": false,
+    "isOutgoing": false,
     "date_time": "today"
   }
 ]

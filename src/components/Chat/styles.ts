@@ -1,12 +1,10 @@
 import styled from 'styled-components';
 
+import { CheckDouble, Check } from 'styled-icons/boxicons-regular';
+
 import backgroundChat from '../../assets/images/background2.png';
 import tailOut from '../../assets/svg/tailOut.svg';
 import tailIn from '../../assets/svg/tailIn.svg';
-
-import {  } from 'styled-icons/boxicons-regular/CheckDouble';
-
-
 
 import { Props } from '.';
 
@@ -32,7 +30,7 @@ export const Header = styled.header`
     white-space: nowrap;
 
     h5 {
-      margin-left: 15px;
+      margin-left: 0px;
       font-family: 'Open Sans', sans-serif;
       font-weight: 400;
       font-size: 15px;
@@ -42,7 +40,20 @@ export const Header = styled.header`
     img {
       margin: 0 12px;
     }
+
+    &.info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      margin-left: 15px;
+    }
   }
+`;
+
+export const Status = styled.span`
+  font-size: 12px;
+  margin-left: 0;
 `;
 
 export const Image = styled.div`
@@ -96,20 +107,25 @@ export const Messenger = styled.div`
 
 export const SkinMessage = styled.div<Props>`
   width: 100%;
-  padding: ${props => props.isFirst ? '5px 5px 1px' : '2px 5px' };
+  padding: ${(props) => (props.isFirst ? '5px 5px 1px' : '2px 5px')};
   color: #303030;
   display: flex;
-  justify-content: ${props => props.isOutgoing ? 'flex-end' : 'flex-start' };
-  /* border: 1px dotted red; */
+  justify-content: ${(props) =>
+    props.isInfo ? 'center' : props.isOutgoing ? 'flex-end' : 'flex-start'};
 `;
-
 
 export const Message = styled.div<Props>`
   min-width: 30px;
   max-width: 60%;
-  padding: 6px 60px 8px 9px;
+  padding: ${(props) =>
+    props.isInfo ? '8px 10px 8px 10px' : '6px 60px 8px 9px'};
   background-color: ${(props) =>
-    props.bgColor === 'outgoing' ? '#dcf8c6' : '#fff'};
+    props.isInfo
+      ? 'rgba(225,245,254,0.92)'
+      : props.bgColor === 'outgoing'
+      ? '#dcf8c6'
+      : '#fff'};
+  text-align: ${(props) => (props.isInfo ? 'center' : 'left')};
   border-radius: ${(props) =>
       props.isFirst && props.bgColor === 'incoming' ? `0px` : '5px'}
     ${(props) =>
@@ -123,7 +139,8 @@ export const Message = styled.div<Props>`
   user-select: text;
 
   span {
-    font-size: 14px;
+    text-transform: ${(props) => (props.isInfo ? 'uppercase' : 'none')};
+    font-size: ${(props) => (props.isInfo ? '12px' : '14px')};
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
   }
@@ -157,11 +174,10 @@ export const Message = styled.div<Props>`
 
 export const InfoMessage = styled.div<Props>`
   width: ${(props) => (props.isOutgoing ? '50px' : '32px')};
-  background: red;
   position: absolute;
   bottom: 0;
   right: 0;
-  display: flex;
+  display: ${(props) => (props.isInfo ? 'none' : 'flex')};
   align-items: flex-start;
   margin-bottom: 3px;
 
@@ -175,7 +191,22 @@ export const InfoMessage = styled.div<Props>`
   }
 `;
 
-export const CheckIcon = styled()
+export const TimeIcon = styled.img`
+  width: 15px;
+  height: 15px;
+`;
+
+export const CheckDoubleIcon = styled(CheckDouble)`
+  width: 15px;
+  height: 15px;
+  color: #4fc3f7;
+`;
+
+export const CheckIcon = styled(Check)`
+  width: 15px;
+  height: 15px;
+  color: rgba(0, 0, 0, 0.45);
+`;
 
 export const Footer = styled.footer`
   width: 100%;

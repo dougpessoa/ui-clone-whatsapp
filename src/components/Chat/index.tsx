@@ -5,6 +5,7 @@ import {
   Container,
   Header,
   Image,
+  Status,
   Footer,
   Icons,
   Input,
@@ -12,27 +13,31 @@ import {
   SkinMessage,
   Message,
   InfoMessage,
-  CheckIcon
+  CheckIcon,
+  CheckDoubleIcon,
+  TimeIcon,
 } from './styles';
 
-import check from '../../assets/svg/check.svg';
 import attachmentIcon from '../../assets/svg/attachmentIcon.svg';
 import searchIcon from '../../assets/svg/searchIcon.svg';
 import optionsIcon from '../../assets/svg/optionsIcon.svg';
-import checkAndRead from '../../assets/svg/checkAndRead.svg';
-import timing from '../../assets/svg/timing.svg';
 import emojis from '../../assets/svg/emojis.svg';
 import microphone from '../../assets/svg/microphone.svg';
 
+import clock from '../../assets/svg/timing.svg';
+
 import fakeConversation from '../../data/fakeConversation.json';
+import fakeChatList from '../../data/fakeChatList.json';
+
+export { CheckIcon, CheckDoubleIcon } from './styles';
 
 export interface Props {
   isFirst?: boolean;
   bgColor?: string;
   isOutgoing?: boolean;
   resize?: boolean;
+  isInfo?: boolean;
 }
-
 
 interface Messages {
   id: string;
@@ -42,20 +47,36 @@ interface Messages {
   time: string;
   read: boolean;
   delivered: boolean;
-  user_name: string;
+  userName: string;
+  info: boolean;
+  date: string;
 }
 
-const Chat: React.FC<Props> = ({
-  isFirst,
-  bgColor,
-  isOutgoing,
-  resize
+interface Intermediate {
+  lastPreview: Function;
+  lastCheck: Function;
+  lastDate: Function;
+  idOfChat: Function;
+}
+
+type TwoProps = Props & Intermediate;
+
+const Chat: React.FC<TwoProps> = ({
+  lastPreview,
+  lastCheck,
+  lastDate,
+  idOfChat,
 }) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [makeResize, setMakeResize] = useState(false);
   const [currentValue, setCurrentValue] = useState('');
+  const [status, setStatus] = useState('');
 
-  const [messagesInChat, setMessagesInChat] = useState<Messages[]>(fakeConversation.conversation);
+  const [messagesInChat, setMessagesInChat] = useState<Messages[]>(
+    fakeConversation.conversation,
+  );
+
+  const [id] = useState('dcbfeef4-be11-11ea-b3de-0242ac130004');
 
   useEffect(() => {
     if (textareaRef && textareaRef.current) {
@@ -69,12 +90,83 @@ const Chat: React.FC<Props> = ({
         setMakeResize(false);
       }
     }
+
+    const date = new Date();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const time = `${hours < 10 ? `0${hours}` : hours}:${
+      minutes < 10 ? `0${minutes}` : minutes
+    } `;
+
+    setStatus(`last seen today at ${time}`);
   }, [currentValue]);
 
-  function handleKeyEvent(e: any): void {
+  function systemResponse(): any {
+    messagesInChat[0].delivered = true;
+    setMessagesInChat(messagesInChat);
 
-    if((e.ctrlKey || e.metaKey) && (e.keyCode === 13 || e.keyCode === 10))  {
-      setCurrentValue(currentValue + '\n');
+    setTimeout(() => {
+      setStatus('online');
+      messagesInChat[0].read = true;
+      setMessagesInChat(messagesInChat);
+    }, 2000);
+
+    setTimeout(() => {
+      setStatus('typing...');
+    }, 4000);
+
+    setTimeout(() => {
+      setStatus('online');
+
+      const date = new Date();
+      const hour =
+        date.getHours() < 10 ? `0${date.getHours()}` : date.getHours();
+      const minutes =
+        date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes();
+      const currentTime = `${hour}:${minutes}`;
+
+      const userResponse = messagesInChat[0].message;
+      let billGatesAnswer = '';
+      if (userResponse.includes('hello')) {
+        billGatesAnswer = 'Hello friend! How are you going?';
+      } else if (userResponse.includes('fine')) {
+        billGatesAnswer = "That's nice! So I need to go now. See you later";
+      } else {
+        billGatesAnswer = "excuse me! but I didn't understand what you said";
+      }
+
+      const newMessage = {
+        id: uuid(),
+        isOutgoing: false,
+        userName: 'Bill Gates',
+        message: billGatesAnswer,
+        time: currentTime,
+        delivered: true,
+        read: true,
+        isFirst: true,
+        info: false,
+        date: 'today',
+      };
+
+      messagesInChat.unshift(newMessage);
+      setMessagesInChat(messagesInChat);
+    }, 9000);
+
+    setTimeout(() => {
+      const date = new Date();
+      const hours = date.getHours();
+      const minutes = date.getMinutes();
+      const time = `${hours < 10 ? `0${hours}` : hours}:${
+        minutes < 10 ? `0${minutes}` : minutes
+      } `;
+
+      setStatus(`last seen today at ${time}`);
+    }, 11000);
+  }
+
+  function handleKeyEvent(e: any): void {
+    if ((e.ctrlKey || e.metaKey) && (e.keyCode === 13 || e.keyCode === 10)) {
+      setCurrentValue(`${currentValue}\n`);
       return;
     }
 
@@ -83,42 +175,62 @@ const Chat: React.FC<Props> = ({
     e.preventDefault();
 
     if (!currentValue) return;
-    console.log()
 
-
-    const time = new Date();
-    const hour = time.getHours() < 10 ? `0${time.getHours()}` : time.getHours();
+    const date = new Date();
+    const hour = date.getHours() < 10 ? `0${date.getHours()}` : date.getHours();
     const minutes =
-      time.getMinutes() < 10 ? `0${time.getMinutes()}` : time.getMinutes();
+      date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes();
     const currentTime = `${hour}:${minutes}`;
 
-    let isFirst = true;
+    if (messagesInChat[0].date === 'yesterday') {
+      const newMessage = {
+        id: uuid(),
+        isOutgoing: false,
+        userName: '',
+        message: 'Today',
+        time: '00:00',
+        delivered: false,
+        read: false,
+        isFirst: false,
+        info: true,
+        date: 'today',
+      };
+
+      messagesInChat.unshift(newMessage);
+    }
+
+    let isFirstCheck = true;
 
     if (messagesInChat[0].isOutgoing) {
-      isFirst = false;
+      isFirstCheck = false;
     }
+
+    lastPreview(currentValue.trim());
+    lastCheck('time');
+    lastDate(`${currentTime}:${date.getSeconds()}:${date.getMilliseconds()}`);
+    idOfChat(id);
 
     const newMessage = {
       id: uuid(),
       isOutgoing: true,
-      user_name: 'me',
+      userName: 'me',
       message: currentValue.trim(),
       time: currentTime,
       delivered: false,
       read: false,
-      isFirst,
+      isFirst: isFirstCheck,
+      info: false,
+      date: 'today',
     };
-
-    console.log(newMessage);
 
     messagesInChat.unshift(newMessage);
 
     setMessagesInChat(messagesInChat);
     setCurrentValue('');
 
-    console.log('nao entregue ', messagesInChat[0]);
-
-    // setTimeout(() => illusionOfSending(), 1500);
+    setTimeout(() => {
+      systemResponse();
+    }, 500);
   }
 
   function formatMessage(message: string): Array<Element> {
@@ -126,8 +238,13 @@ const Chat: React.FC<Props> = ({
 
     const msg = message.split('\n');
 
-    for (let i = 0; i < msg.length; i++) {
-      html.push(<p>  {msg[i]}  <br /> </p>);
+    for (let i = 0; i < msg.length; i += 1) {
+      html.push(
+        <p>
+          {msg[i]}
+          <br />
+        </p>,
+      );
     }
 
     return html;
@@ -140,12 +257,15 @@ const Chat: React.FC<Props> = ({
           <Image>
             <div>
               <img
-                src="https://lh3.google.com/u/0/d/1XEdKCylZpWEqNzr22M0BdYdFGy64motZ=w2000-h704-iv1"
+                src="https://lh3.google.com/u/3/d/1XEdKCylZpWEqNzr22M0BdYdFGy64motZ=w1481-h919-iv1"
                 alt="User"
               />
             </div>
           </Image>
-          <h5>Bill Gates</h5>
+          <div className="info">
+            <h5>Bill Gates</h5>
+            <Status>{status}</Status>
+          </div>
         </div>
         <div>
           <img src={searchIcon} alt="search icon" />
@@ -155,17 +275,29 @@ const Chat: React.FC<Props> = ({
       </Header>
 
       <Messenger>
-        {messagesInChat.map(msg => (
+        {messagesInChat.map((msg) => (
           <SkinMessage
+            isInfo={msg.info}
             isOutgoing={msg.isOutgoing}
             isFirst={msg.isFirst}
             key={msg.id}
           >
-            <Message bgColor={msg.isOutgoing ? "outgoing" : "incoming"} isFirst={msg.isFirst}>
+            <Message
+              bgColor={msg.isOutgoing ? 'outgoing' : 'incoming'}
+              isFirst={msg.isFirst}
+              isInfo={msg.info}
+            >
               <span>{formatMessage(msg.message)}</span>
-              <InfoMessage isOutgoing={msg.isOutgoing} >
+              <InfoMessage isOutgoing={msg.isOutgoing} isInfo={msg.info}>
                 <span>{msg.time}</span>
-                { msg.isOutgoing && <CheckIcon /> }
+                {/* eslint-disable-next-line no-nested-ternary */}
+                {msg.isOutgoing && msg.read ? (
+                  <CheckDoubleIcon />
+                ) : msg.delivered ? (
+                  <CheckIcon />
+                ) : (
+                  <TimeIcon src={clock} />
+                )}
               </InfoMessage>
             </Message>
           </SkinMessage>

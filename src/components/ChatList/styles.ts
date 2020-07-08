@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import { CheckDouble, Check } from 'styled-icons/boxicons-regular';
-
 export const Container = styled.div`
   width: 100%;
   height: calc(100% - 109px);
@@ -85,29 +83,35 @@ export const Bottom = styled.div`
   justify-content: space-between;
   padding: 2px 13px 0 7px;
 
-  p {
+  div {
     font-weight: 400;
     font-size: 14px;
     color: #939393;
 
-    text-overflow: ellipsis;
+    /* background: red; */
+
+    max-width: 97%;
+    display: block;
+
+    text-overflow: ellipsis !important;
     overflow: hidden;
     white-space: nowrap;
+
+    display: flex;
+    align-items: center;
+
+    img {
+      display: inline;
+    }
   }
 
-  img {
+  img{
     display: none;
   }
+
 `;
 
-export const CheckDoubleIcon = styled(CheckDouble)<{ size: number }>`
+export const CheckIcon = styled.img<{ size: number }>`
   width: ${(props) => `${props.size}px`};
   height: ${(props) => `${props.size}px`};
-  color: #4fc3f7;
-`;
-
-export const CheckIcon = styled(Check)`
-  width: ${(props) => `${props.size}px`};
-  height: ${(props) => `${props.size}px`};
-  color: rgba(0, 0, 0, 0.45);
 `;

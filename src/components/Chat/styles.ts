@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import { CheckDouble, Check } from 'styled-icons/boxicons-regular';
-
 import backgroundChat from '../../assets/images/background2.png';
 import tailOut from '../../assets/svg/tailOut.svg';
 import tailIn from '../../assets/svg/tailIn.svg';
@@ -115,7 +113,7 @@ export const SkinMessage = styled.div<Props>`
 `;
 
 export const Message = styled.div<Props>`
-  min-width: 30px;
+  min-width: ${(props) => (props.isInfo ? '60px' : '100px')};
   max-width: 60%;
   padding: ${(props) =>
     props.isInfo ? '8px 10px 8px 10px' : '6px 60px 8px 9px'};
@@ -137,6 +135,7 @@ export const Message = styled.div<Props>`
   -moz-user-select: text;
   -ms-user-select: text;
   user-select: text;
+  box-shadow: 0 1px .5px rgba(0, 0, 0, .13);
 
   span {
     text-transform: ${(props) => (props.isInfo ? 'uppercase' : 'none')};
@@ -187,7 +186,10 @@ export const InfoMessage = styled.div<Props>`
     font-weight: 500;
     color: rgba(0, 0, 0, 0.45);
     margin-right: 3px;
-    /* background: blue; */
+  }
+
+  img {
+    display: ${(props) => (props.isOutgoing) ? 'inline' : 'none'};
   }
 `;
 
@@ -196,16 +198,15 @@ export const TimeIcon = styled.img`
   height: 15px;
 `;
 
-export const CheckDoubleIcon = styled(CheckDouble)`
+export const CheckDoubleIcon = styled.img`
   width: 15px;
   height: 15px;
-  color: #4fc3f7;
+  /* color: #4fc3f7; */
 `;
 
-export const CheckIcon = styled(Check)`
+export const CheckIcon = styled.img`
   width: 15px;
   height: 15px;
-  color: rgba(0, 0, 0, 0.45);
 `;
 
 export const Footer = styled.footer`

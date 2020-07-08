@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 import {
   Container,
@@ -8,13 +8,17 @@ import {
   DetailsChat,
   Top,
   Bottom,
-  CheckIcon,
-  CheckDoubleIcon,
+  CheckIcon
 } from './styles';
+
+import { uuid } from 'uuidv4';
 
 import fakeData from '../../data/fakeChatList.json';
 
 import arrowDown from '../../assets/svg/arrowDown.svg';
+import doubleChecked from '../../assets/svg/doubleCheck.svg';
+import doubleCheckedRead from '../../assets/svg/doubleCheckRead.svg';
+import checked from '../../assets/svg/check.svg';
 
 export interface PropsChatList {
   chat: Function;
@@ -40,17 +44,6 @@ const ChatList: React.FC<PropsChatList> = ({
     chat(id);
   }
 
-  /** {
-    "id": "1",
-    "user": "Bill Gates",
-    "photo": "https://lh3.google.com/u/3/d/1XEdKCylZpWEqNzr22M0BdYdFGy64motZ=w1481-h919-iv1",
-    "preview": "Alright.",
-    "read": false,
-    "delivered": false,
-    "isOutgoing": false,
-    "date_time": "yesterday"
-  }, */
-
   useEffect(() => {
     if (date) {
       const index = listOfChat
@@ -59,20 +52,34 @@ const ChatList: React.FC<PropsChatList> = ({
         })
         .indexOf(idChat);
 
-      console.log(listOfChat);
       listOfChat[index].preview = preview;
-      console.log(listOfChat);
+      listOfChat[index].read = false;
+      listOfChat[index].delivered = false;
+      listOfChat[index].isOutgoing = true;
+
+      const id = listOfChat[index].id;
+
+      const imgID = id.split("-")[0];
+      const spanID = id.replace(/-/g, '');
+      const timeID = id.split("-").slice(0, 2).join("");
+
+      const newDate = `${date.split(":")[0]}:${date.split(":")[1]}`;
+
+      (document.getElementById(imgID) as HTMLImageElement ).style.display = 'none';
+      (document.getElementById(timeID) as HTMLSpanElement ).innerText = newDate;
+      (document.getElementById(spanID) as HTMLSpanElement ).innerText = preview;
       setListOfChat(listOfChat);
-      console.log(idChat);
     }
   }, [date, listOfChat]);
 
+
+
   return (
     <Container>
-      {listOfChat.map((data, index) => (
+      {listOfChat.map(data => (
         <Chat
           key={data.id}
-          onClick={() => handleChatSelected(data.id)}
+          onClick={() => data.user === "Bill Gates" && handleChatSelected(data.id)}
           bgColor={data.id === chatSelected}
         >
           <IconImage>
@@ -82,13 +89,21 @@ const ChatList: React.FC<PropsChatList> = ({
             <Top>
               <h5 title={data.user}>{data.user}</h5>
 
-              <span>{data.date_time}</span>
+              <span id={data.id.split("-").slice(0, 2).join("")}>{data.date_time}</span>
             </Top>
             <Bottom>
-              <p title={data.preview}>
-                <CheckDoubleIcon size={21} />
-                {data.preview}
-              </p>
+              <div title={data.preview}>
+                {
+                  data.read ?
+                    <CheckIcon id={data.id.split("-")[0]} src={doubleCheckedRead} size={18} className="checkIcon" />
+                  :
+                  data.delivered ?
+                    <CheckIcon id={data.id.split("-")[0]} src={doubleChecked} size={18} className="checkIcon" />
+                  :
+                  data.isOutgoing && <CheckIcon id={data.id.split("-")[0]} src={checked} size={18} className="checkIcon" />
+                }
+                <span id={data.id.replace(/-/g, '')}>{data.preview}</span>
+              </div>
 
               <img src={arrowDown} alt="Arrow down" />
             </Bottom>

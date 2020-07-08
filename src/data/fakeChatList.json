@@ -2,83 +2,85 @@
   "data": [
   {
     "id": "dcbfeef4-be11-11ea-b3de-0242ac130004",
+
     "user": "Bill Gates",
-    "photo": "https://lh3.google.com/u/3/d/1XEdKCylZpWEqNzr22M0BdYdFGy64motZ=w1481-h919-iv1",
+    "photo": "https://i.ibb.co/6HJzkwR/gates.jpg",
     "preview": "Alright.",
+    "read": true,
+    "delivered": true,
+    "isOutgoing": true,
+    "date_time": "yesterday"
+  },
+  {
+    "id": "ec8487fa-be11-11ea-b3de-0242ac130004",
+    "user": "Frances Allen",
+    "photo": "https://i.ibb.co/gDhRQnw/allen.jpg",
+    "preview": "You are a super smart student!",
     "read": false,
     "delivered": false,
     "isOutgoing": false,
     "date_time": "yesterday"
   },
   {
-    "id": "ec8487fa-be11-11ea-b3de-0242ac130004",
-    "user": "Frances Allen",
-    "photo": "https://lh3.google.com/u/3/d/13Q2N3_0XCStlT-sNEC_oNXGnj9cgWv8m=w1478-h919-iv1",
-    "preview": "Hello World",
+    "id": "029fae02-be12-11ea-b3de-0242ac130004",
+    "user": "Mark Zuckerberg",
+    "photo": "https://i.ibb.co/JKwvZgn/zuckerberg.jpg",
+    "preview": "Did you use Facebook today? Or Instagram? Yours WhatsApp is amazing!",
     "read": false,
     "delivered": false,
     "isOutgoing": false,
-    "date_time": "today"
+    "date_time": "yesterday"
   },
   {
     "id": "f00a30be-be11-11ea-b3de-0242ac130004",
     "user": "Sheryl Sandberg",
-    "photo": "https://lh3.google.com/u/3/d/1QYT3JUDbuEIWfF2S4zm0lGz959f1n8Fc=w1478-h583-iv1",
-    "preview": "Hello World",
+    "photo": "https://i.ibb.co/WxSyrMr/sandberg.jpg",
+    "preview": "I want you in my developer team!",
     "read": false,
     "delivered": false,
     "isOutgoing": false,
-    "date_time": "today"
+    "date_time": "yesterday"
   },
-  {
-    "id": "f566b802-be11-11ea-b3de-0242ac130004",
-    "user": "Steve Jobs",
-    "photo": "https://lh3.google.com/u/3/d/1rSV3n2nga3o267gJN77nUjDw9wwjh8cc=w1478-h583-iv1",
-    "preview": "Hello World",
-     "read": false,
-    "delivered": false,
-    "isOutgoing": false,
-    "date_time": "today"
-  },
+
   {
     "id": "fa682b24-be11-11ea-b3de-0242ac130004",
     "user": "Susan Wojcicki",
-    "photo": "https://lh3.google.com/u/3/d/1tOWU1cQeybJ98Aq9pDAom4f64sXfxKJF=w1478-h583-iv1",
-    "preview": "Hello World",
-     "read": false,
+    "photo": "https://i.ibb.co/wWtBtZ9/wojcicki.jpg",
+    "preview": "They made videos and upload in another platform? zzz...",
+    "read": false,
     "delivered": false,
     "isOutgoing": false,
-    "date_time": "today"
+    "date_time": "yesterday"
   },
   {
     "id": "fe08d030-be11-11ea-b3de-0242ac130004",
     "user": "Radia Perlman",
-    "photo": "https://lh3.google.com/u/3/d/12NIpzijTANjpU6BtZgprKa2fY0ViRmk8=w1478-h583-iv1",
-    "preview": "Hello World",
-     "read": false,
-    "delivered": false,
-    "isOutgoing": false,
-    "date_time": "today"
+    "photo": "https://i.ibb.co/rmNwQ6w/perlman.jpg",
+    "preview": "Thanks mom",
+    "read": true,
+    "delivered": true,
+    "isOutgoing": true,
+    "date_time": "yesterday"
   },
   {
-    "id": "029fae02-be12-11ea-b3de-0242ac130004",
-    "user": "Mark Zuckerberg",
-    "photo": "https://lh3.google.com/u/3/d/1349V1HR4SnyVQdj63K6rXd0U25C9wynr=w1478-h583-iv1",
-    "preview": "Hello World",
+    "id": "f566b802-be11-11ea-b3de-0242ac130004",
+    "user": "Steve Jobs",
+    "photo": "https://i.ibb.co/fSFSZXQ/jobs.jpg",
+    "preview": "Tribute for Steve Jobs",
      "read": false,
     "delivered": false,
     "isOutgoing": false,
-    "date_time": "today"
+    "date_time": "5/10/2011"
   },
   {
     "id": "05b2c7e6-be12-11ea-b3de-0242ac130004",
     "user": "Alan Turing",
-    "photo": "https://lh3.google.com/u/3/d/1tOWU1cQeybJ98Aq9pDAom4f64sXfxKJF=w1478-h583-iv1",
-    "preview": "Hello World",
-     "read": false,
+    "photo": "https://i.ibb.co/GPr9Y5Z/turing.jpg",
+    "preview": "Tribute for Alan Turing",
+    "read": false,
     "delivered": false,
     "isOutgoing": false,
-    "date_time": "today"
+    "date_time": "7/6/1954"
   }
 ]
 }

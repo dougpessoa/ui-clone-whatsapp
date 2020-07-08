@@ -22,6 +22,9 @@ import attachmentIcon from '../../assets/svg/attachmentIcon.svg';
 import searchIcon from '../../assets/svg/searchIcon.svg';
 import optionsIcon from '../../assets/svg/optionsIcon.svg';
 import emojis from '../../assets/svg/emojis.svg';
+import doubleCheck from '../../assets/svg/doubleCheck.svg';
+import doubleCheckRead from '../../assets/svg/doubleCheckRead.svg';
+import check from '../../assets/svg/check.svg';
 import microphone from '../../assets/svg/microphone.svg';
 
 import clock from '../../assets/svg/timing.svg';
@@ -48,6 +51,7 @@ interface Messages {
   read: boolean;
   delivered: boolean;
   userName: string;
+  sent: boolean;
   info: boolean;
   date: string;
 }
@@ -142,6 +146,7 @@ const Chat: React.FC<TwoProps> = ({
         message: billGatesAnswer,
         time: currentTime,
         delivered: true,
+        sent: true,
         read: true,
         isFirst: true,
         info: false,
@@ -191,6 +196,7 @@ const Chat: React.FC<TwoProps> = ({
         time: '00:00',
         delivered: false,
         read: false,
+        sent: false,
         isFirst: false,
         info: true,
         date: 'today',
@@ -217,6 +223,7 @@ const Chat: React.FC<TwoProps> = ({
       message: currentValue.trim(),
       time: currentTime,
       delivered: false,
+      sent: false,
       read: false,
       isFirst: isFirstCheck,
       info: false,
@@ -257,7 +264,7 @@ const Chat: React.FC<TwoProps> = ({
           <Image>
             <div>
               <img
-                src="https://lh3.google.com/u/3/d/1XEdKCylZpWEqNzr22M0BdYdFGy64motZ=w1481-h919-iv1"
+                src="https://i.ibb.co/6HJzkwR/gates.jpg"
                 alt="User"
               />
             </div>
@@ -292,9 +299,11 @@ const Chat: React.FC<TwoProps> = ({
                 <span>{msg.time}</span>
                 {/* eslint-disable-next-line no-nested-ternary */}
                 {msg.isOutgoing && msg.read ? (
-                  <CheckDoubleIcon />
+                  <CheckDoubleIcon src={doubleCheckRead} />
+                ) : msg.sent ? (
+                  <CheckDoubleIcon src={doubleCheck} />
                 ) : msg.delivered ? (
-                  <CheckIcon />
+                  <CheckIcon src={check} />
                 ) : (
                   <TimeIcon src={clock} />
                 )}

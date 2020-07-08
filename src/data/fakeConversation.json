@@ -11,6 +11,7 @@
       "message": "Alright.",
       "time": "17:55",
       "delivered": true,
+      "sent": true,
       "read": true,
       "isFirst": true
     },
@@ -23,6 +24,7 @@
       "message": "Do it from scratch. Because I trust you.",
       "time": "17:54",
       "delivered": true,
+      "sent": true,
       "read": true,
       "isFirst": true
     },
@@ -35,6 +37,7 @@
       "message": "Or do you want me to do it from scratch?",
       "time": "17:51",
       "delivered": true,
+      "sent": true,
       "read": true,
       "isFirst": false
     },
@@ -47,6 +50,7 @@
       "message": "right, you want me to do how?\n \n have any specific framework?",
       "time": "17:51",
       "delivered": true,
+      "sent": true,
       "read": true,
       "isFirst": true
     },
@@ -59,6 +63,7 @@
       "message": "Hey Dude.\n I need you to make a system in ReactJS for Microsoft.\n \nIt's super simple, you will get it easily.",
       "time": "17:50",
       "delivered": true,
+      "sent": true,
       "read": true,
       "isFirst": true
     },
@@ -67,10 +72,11 @@
       "info": true,
       "date": "yesterday",
       "isOutgoing": false,
-      "userName": "",
+      "userName": "me",
       "message": "Yesterday",
       "time": "00:00",
       "delivered": false,
+      "sent": true,
       "read": false,
       "isFirst": false
     }
